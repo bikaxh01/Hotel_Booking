@@ -101,8 +101,6 @@ route.post("/signin", async (req: Request, res: Response) => {
 
     const checkPassword = await bcrypt.compare(password, user.password);
 
-    console.log(checkPassword);
-
     if (!checkPassword) {
       return res.status(400).json({
         success: false,
