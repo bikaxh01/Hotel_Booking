@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "../components/ui/button";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
+import {useNavigate} from 'react-router-dom'
 import {
   Form,
   FormControl,
@@ -13,11 +14,19 @@ import {
 } from "../components/ui/form";
 import { Input } from "../components/ui/input";
 import { useForm } from "react-hook-form";
+
+interface formData{
+  username:string,
+  password:string,
+  email:string
+}
+
 function Signup() {
   const [loader,setLoader]= useState(false)
   const form = useForm();
+  const navigate = useNavigate()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data:formData) => {
     try {
       setLoader(true)
       const { username, email, password } = data;
@@ -30,9 +39,9 @@ function Signup() {
           email
         }
       );
-      
+      navigate('/signin')
       toast.success(response.data.message)
-    } catch (error) {
+    } catch (error:any) {
       toast.error(error.response.data.message);
     }finally{
       setLoader(false)

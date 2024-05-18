@@ -51,13 +51,6 @@ route.post("/signup", async (req: Request, res: Response) => {
       },
     });
 
-    const userCookie = await jwt.sign(
-      { userId: newUser.id },
-      process.env.JWT_SECRET as string
-    );
-
-    res.cookie("Auth", userCookie);
-
     res.json({
       success: true,
       message: "Created successfully",
@@ -114,7 +107,10 @@ route.post("/signin", async (req: Request, res: Response) => {
       process.env.JWT_SECRET as string
     );
 
-    res.cookie("Auth", userCookie);
+    res.cookie("Auth", userCookie, {
+      httpOnly: true,
+      secure: true,
+    });
 
     return res.status(200).json({
       success: false,
