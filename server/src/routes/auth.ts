@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 
 import jwt from "jsonwebtoken";
 import { singInSchema, singUpSchema } from "../../ZodValidation/authSchema";
+import verifyToken from "../Middleware/verifyToken";
 
 const prisma = new PrismaClient();
 const route = Router();
@@ -113,7 +114,7 @@ route.post("/signin", async (req: Request, res: Response) => {
     });
 
     return res.status(200).json({
-      success: false,
+      success: true,
       message: "logged in success",
       data: null,
     });
@@ -125,5 +126,15 @@ route.post("/signin", async (req: Request, res: Response) => {
     });
   }
 });
+
+route.get('/validate-token',verifyToken,(req:Request,res:Response)=>{
+
+ res.status(200).json({
+  success:true,
+  message:"Success",
+  data: {userID:req.userID}
+  
+ })
+})
 
 export default route;
