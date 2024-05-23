@@ -127,14 +127,21 @@ route.post("/signin", async (req: Request, res: Response) => {
   }
 });
 
-route.get('/validate-token',verifyToken,(req:Request,res:Response)=>{
+route.get("/validate-token", verifyToken, (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: "Success",
+    data: { userID: req.userID },
+  });
+});
 
- res.status(200).json({
-  success:true,
-  message:"Success",
-  data: {userID:req.userID}
-  
- })
-})
+route.get("/signout", (req: Request, res: Response) => {
+  res.clearCookie("Auth");
+  res.status(200).json({
+    success: true,
+    message: "Sucessfully signout...",
+    data: null,
+  });
+});
 
 export default route;

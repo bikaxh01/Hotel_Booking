@@ -1,24 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layouts/Layout";
-import Signup from "./pages/Signup"
+import Signup from "./pages/Signup";
 import Signin from "./pages/signin";
+import Home from "./pages/home";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
-          element={
-            <Layout>
-              <p>Home page</p>
-            </Layout>
-          }
-        />
-        <Route
           path="/signin"
           element={
             <Layout>
-              <Signin/>
+              <Signin />
             </Layout>
           }
         />
@@ -26,7 +20,15 @@ function App() {
           path="/signup"
           element={
             <Layout>
-              <Signup/>
+              <Signup />
+            </Layout>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Home />
             </Layout>
           }
         />

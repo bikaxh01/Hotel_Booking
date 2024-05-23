@@ -34,7 +34,7 @@ function Signin() {
             withCredentials:true
         }
       );
-      navigate('/home')
+      navigate('/')
       toast.success(response.data.message)
     } catch (error) {
       toast.error(error.response.data.message);
