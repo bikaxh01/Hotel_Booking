@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../components/ui/button";
 import axios from "axios";
 import { toast } from "sonner";
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {
   Form,
   FormControl,
@@ -79,6 +79,7 @@ function Signin() {
         <div>
           <Button type="submit" disabled={loader}>Submit</Button>
         </div>
+       <Link to='/signup' className=" underline text-blue-700">Register Here</Link>
       </form>
     </Form>
   );
