@@ -3,6 +3,7 @@ import Layout from "./Layouts/Layout";
 import Signup from "./pages/Signup";
 import Signin from "./pages/signin";
 import Home from "./pages/home";
+import Hotel from "./pages/hotel";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/hotel"
+          element={
+            <Layout>
+              <Hotel />
             </Layout>
           }
         />
