@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors'
 import route from "./routes/auth";
+import hotel from './routes/hotel'
 import cookieparser from 'cookie-parser'
 const app = express();
 
@@ -17,5 +18,6 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/auth',route)
+app.use('/api',hotel)
 
 app.listen(3000);

@@ -22,30 +22,26 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 const  items = [
     {
-      id: "recents",
-      label: "Recents",
+      id: "free wifi",
+      label: "Free Wifi",
     },
     {
-      id: "home",
-      label: "Home",
+      id: "Ac",
+      label: "Ac",
     },
     {
-      id: "applications",
-      label: "Applications",
+      id: "gym",
+      label: "GYM",
     },
     {
-      id: "desktop",
-      label: "Desktop",
+      id: "Parking",
+      label: "Parking",
     },
     {
-      id: "downloads",
-      label: "Downloads",
+      id: "Spa",
+      label: "Spa",
     },
-    {
-      id: "documents",
-      label: "Documents",
-    },
-  ] as const
+  ] 
 
 function Hotel() {
   const form = useForm({
