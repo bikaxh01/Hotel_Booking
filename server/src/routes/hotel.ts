@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 import upload from "../utils/multer";
 import fs from "fs";
 import uploadToS3 from "../utils/s3";
+import { promises } from "dns";
 
 const route = Router();
 route.post(
@@ -11,7 +12,7 @@ route.post(
     try {
       const images = req.files as Express.Multer.File[];
 
-      images?.map(async (image) => {
+      const uploadImages = images?.map(async (image) => {
         const data = fs.readFileSync(image.path);
 
         const url = await uploadToS3(
@@ -20,10 +21,16 @@ route.post(
           image.mimetype,
           data
         );
-        console.log(url);
-        
+        return url;
       });
-     
+
+      const imageURL: string[] = await Promise.all(uploadImages);
+
+
+      
+
+
+
       res.json({
         status: "OK",
       });
